@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="text-center">
+    <h1 class="display-4">Hello World Web Service</h1>
+    <p>Click the button below to get a greeting from the API:</p>
+    <button id="fetchGreetingBtn" class="btn btn-primary">Get Greeting</button>
+    <p id="greetingMessage" class="mt-3"></p>
+</div>
+@section Scripts {
+    <script>
+        document.getElementById('fetchGreetingBtn').addEventListener('click', async function () {
+        const response = await fetch('/api/helloworldapi');
+        const message = await response.text();
+        document.getElementById('greetingMessage').innerText = message;
+        });
+    </script>
+}
